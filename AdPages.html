@@ -1,0 +1,24 @@
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+</head>
+<body>
+  <div id="chart">
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chart", 790,590);
+    d3.csv("addata2.csv", function(data) {
+      var myChart = new dimple.chart(svg,data);
+      myChart.setBounds(60,30,505,305);
+      myChart.setMargins(100,70,100,100);
+      var x = myChart.addCategoryAxis("x","Year");
+      var y = myChart.addMeasureAxis("y","AdPages");
+      myChart.addSeries("publication", dimple.plot.line);
+      myChart.assignColor("Time","#3CB371")
+      myChart.assignColor("The New Yorker","#DAA520")
+      myChart.addLegend(220,40,500,40,"right");
+      myChart.draw();
+
+    })
+  </script>
+  </div>
+</body>
