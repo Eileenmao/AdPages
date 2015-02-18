@@ -1,24 +1,32 @@
-<head>
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-  <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
-</head>
-<body>
-  <div id="chart">
-  <script type="text/javascript">
-    var svg = dimple.newSvg("#chart", 790,590);
-    d3.csv("addata2.csv", function(data) {
-      var myChart = new dimple.chart(svg,data);
-      myChart.setBounds(60,30,505,305);
-      myChart.setMargins(100,70,100,100);
-      var x = myChart.addCategoryAxis("x","Year");
-      var y = myChart.addMeasureAxis("y","AdPages");
-      myChart.addSeries("publication", dimple.plot.line);
-      myChart.assignColor("Time","#3CB371")
-      myChart.assignColor("The New Yorker","#DAA520")
-      myChart.addLegend(220,40,500,40,"right");
-      myChart.draw();
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.1.2.min.js"></script>
+    <link rel="stylesheet" href="ad.css"/>
+  </head>
+  <body>
+    <h2> Ad Pages by Publication </h2>
+    <div id="chart">
+    <script type="text/javascript">
+      var svg = dimple.newSvg("#chart", 790,590);
+      d3.csv("addata2.csv", function(data) {
+        var myChart = new dimple.chart(svg,data);
+        myChart.setBounds(60,30,505,305);
+        myChart.setMargins(100,70,100,100);
+        var x = myChart.addCategoryAxis("x","Year");
+        var y = myChart.addMeasureAxis("y","AdPages");
+        myChart.addSeries("publication", dimple.plot.line);
+        myChart.assignColor("Time","#3CB371")
+        myChart.assignColor("The New Yorker","#DAA520")
+        myChart.addLegend(220,40,500,40,"right");
+        myChart.draw();
 
-    })
-  </script>
-  </div>
-</body>
+      })
+    </script>
+    </div>
+    <p id="head"> Visualization Analysis </p>
+    <p class="analyze"> This is an visualization for change of ad pages by three pulications (Time, The New Yorker and The Economics) from 2001 to 2013. The line chart shows ad pages in these magazines are generally decreased by years. In 2009, there is a sharp down of ad pages for all these magazines. It is possible because of the development of information technology. Adverstisers are more willing to advertise on moblie device or web pages. </p>
+    <p> Data Source: Publishers Information Bureau, Association of Magazine Media </p>
+  </body>
+</html>
